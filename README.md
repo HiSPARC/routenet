@@ -1,8 +1,6 @@
 RouteNet Source Documents
 =========================
 
-![http://img.shields.io/travis/HiSPARC/routenet/master.svg](https://travis-ci.org/HiSPARC/routenet)
-
 This repository contains the source files for most of the RouteNet documents.
 Both for generating the figures and the text documents.
 
