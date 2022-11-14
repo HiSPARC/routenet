@@ -31,7 +31,7 @@ jobs:
           work_in_root_file_dir: true
       - uses: actions/upload-artifact@v3
         with:
-          name: pdf
+          name: dutch
           path: "Dutch/*/*.pdf"
 
   english:
@@ -46,7 +46,7 @@ jobs:
           work_in_root_file_dir: true
       - uses: actions/upload-artifact@v3
         with:
-          name: pdf
+          name: english
           path: "English/*/*/*.pdf"
 
   publish:
