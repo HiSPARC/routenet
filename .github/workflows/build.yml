@@ -32,7 +32,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: dutch
-          path: "Dutch/*/*.pdf"
+          path: "Dutch*/*/*.pdf"
 
   english:
     runs-on: ubuntu-latest
@@ -47,7 +47,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: english
-          path: "English/*/*/*.pdf"
+          path: "English*/*/*/*.pdf"
 
   publish:
     needs: [index, english, dutch]
