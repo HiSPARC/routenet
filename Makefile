@@ -1,18 +1,21 @@
-.PHONY: all distclean clean gh-pages latexmk-recursive distclean-recursive clean-recursive
-
 EN_TEX_DIRECTORIES=$(sort $(dir $(wildcard English/*/*/*.tex)))
 NL_TEX_DIRECTORIES=$(sort $(dir $(wildcard Dutch/*/*.tex)))
 ROOT_DIR:=$(shell dirname '$(realpath $(lastword $(MAKEFILE_LIST)))')
 
 # '-recursive' rules are based on a Makefile by Santiago Gonzalez Gancedo
-# https://github.com/sangonz/latex_makefile
 # which was a modified version of a Makefile by Johannes Ranke,
 # which was based on Makesfiles by Tadeusz Pietraszek
 
+.PHONY: all
 all: latexmk-recursive
+
+.PHONY: distclean
 distclean: distclean-recursive
+
+.PHONY: clean
 clean: clean-recursive
 
+.PHONY: latexmk-recursive
 latexmk-recursive:
 	@for dir in $(NL_TEX_DIRECTORIES) $(EN_TEX_DIRECTORIES); do \
 		echo '******** starting latexmk ********'; \
@@ -23,6 +26,7 @@ latexmk-recursive:
 		cd '$(ROOT_DIR)'; \
 	done
 
+.PHONY: distclean-recursive
 distclean-recursive:
 	@for dir in $(NL_TEX_DIRECTORIES) $(EN_TEX_DIRECTORIES); do \
 		cd $$dir; \
@@ -31,6 +35,7 @@ distclean-recursive:
 		cd '$(ROOT_DIR)'; \
 	done
 
+.PHONY: clean-recursive
 clean-recursive:
 	@for dir in $(NL_TEX_DIRECTORIES) $(EN_TEX_DIRECTORIES); do \
 		cd $$dir; \

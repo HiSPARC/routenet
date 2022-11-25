@@ -1,0 +1,68 @@
+name: Build documents
+
+on:
+  push:
+
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/upload-artifact@v3
+        with:
+          name: index
+          path: |
+            images
+            scripts
+            styles
+            index.html
+            routenet_en.html
+            routenet.html
+
+  dutch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: xu-cheng/latex-action@v2
+        with:
+          root_file: "Dutch/*/*.tex"
+          glob_root_file: true
+          latexmk_shell_escape: true
+          work_in_root_file_dir: true
+      - uses: actions/upload-artifact@v3
+        with:
+          name: dutch
+          path: "Dutch*/*/*.pdf"
+
+  english:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: xu-cheng/latex-action@v2
+        with:
+          root_file: "English/*/*/*.tex"
+          glob_root_file: true
+          latexmk_shell_escape: true
+          work_in_root_file_dir: true
+      - uses: actions/upload-artifact@v3
+        with:
+          name: english
+          path: "English*/*/*/*.pdf"
+
+  publish:
+    needs: [index, english, dutch]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - uses: actions/download-artifact@v3
+      - run: mv index/* ./
+      - run: mkdir nl
+      - run: mv dutch/Dutch/*/*.pdf ./nl/
+      - run: mkdir en
+      - run: mv english/English/*/*/*.pdf ./en/
+      - uses: peaceiris/actions-gh-pages@v3.9.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          publish_branch: gh-pages
+          force_orphan: true
