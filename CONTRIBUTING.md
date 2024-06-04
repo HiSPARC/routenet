@@ -3,7 +3,7 @@ How to contribute
 
 To submit new documents for review or propose changes to existing ones you can
 create create a Pull Request or Issue on GitHub. If you do not have a
-GitHub account you can the send documents or changes to beheer@hisparc.nl.
+GitHub account you can the send documents or changes to hisparc@utah.edu.
 
 
 File Format
