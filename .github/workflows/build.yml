@@ -7,7 +7,7 @@ jobs:
   index:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: actions/upload-artifact@v4
         with:
           name: index
@@ -22,7 +22,7 @@ jobs:
   dutch:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: xu-cheng/latex-action@v3
         with:
           root_file: "Dutch/*/*.tex"
@@ -37,7 +37,7 @@ jobs:
   english:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: xu-cheng/latex-action@v3
         with:
           root_file: "English/*/*/*.tex"
