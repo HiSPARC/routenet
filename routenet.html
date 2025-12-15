@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Het RouteNet</title>
+    <meta name="author" content="N.G. Schultheiss">
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/routenet.css">
+    <script src="scripts/jquery-1.8.2.min.js"></script>
+    <script src="scripts/highlight.js"></script>
+    <base target="_blank">
+</head>
+
+<body>
+
+<!--
+    Iedere cel ('<td>') bevat de attributen 'id' en 'data-next', eventueel is 'data-next' leeg.
+    Het attribuut 'id' bevat de naam van de instantie, bijvoorbeeld: 'kl3'.
+    Het attribuut 'data-next' bevat de namen van de hierop volgende instanties, bijvoorbeeld: 'spg,lzn,hml,kl4'.
+-->
+
+<table id="routenet" border="0">
+  <tbody>
+    <tr>
+      <td rowspan="4" id="kl3" data-next='#spg,#lzn,#hml,#kl4'>
+        Derde klas
+      </td>
+      <td id="spg" data-next='#prs,#lzn'>
+        <a href="nl/Spiegels.pdf">Spiegels</a>
+      </td>
+      <td id="prs" data-next='#lzs'>
+        <a href="nl/Parabool_Spiegel.pdf">Parabolische spiegels</a>
+      </td>
+      <td colspan="2" rowspan="2" class="empty"></td>
+      <td rowspan="2" class="empty">
+        <a href="http://www.hisparc.nl">
+          <img width="125" height="42" src="images/header.png">
+        </a>
+      </td>
+    </tr>
+
+    <tr>
+      <td id="lzn" data-next='#lzs,#tls'>
+        <a href="nl/Lenzen.pdf">Lenzen</a>
+      </td>
+      <td id="lzs" data-next='#tls'>
+        <a href="nl/Lenzen_Slijpen.pdf">Lenzen slijpen</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2" id="tls" data-next='#exh,#PDe'>
+        <a href="nl/Telescopen.pdf">Telescopen</a>
+      </td>
+      <td rowspan="3" id="exh" data-next='#rtl,#exh,#PAs'>
+        <a href="nl/Uitdijend_Heelal.pdf">Het uitdijend<br> heelal</a>
+      </td>
+      <td rowspan="3" id="rtl" data-next='#PAs'>
+        <a href="nl/Radio_Telescoop.pdf">Radiotelescopen</a>
+      </td>
+      <td rowspan="3" id='PAs' data-next='#din'>
+        <a href="nl/Astronomisch_PWS.pdf">Astronomisch<br> profielwerkstuk</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td id="hml" data-next='#hll'>
+        <a href="nl/De_Hemel.pdf">De hemel</a>
+      </td>
+      <td id="hll" data-next='#exh'>
+        <a href="nl/Het_Heelal.pdf">Het heelal</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td rowspan="6" id="kl4" data-next='#zon,#vdw,#bts,#SE,#kl5'>
+        Vierde klas
+      </td>
+      <td id="dct" data-next='#pmi,#klr,#znw'>
+        <a href="nl/Detecteren.pdf">Detecteren</a>
+      </td>
+      <td id="klr" data-next='#exh'>
+        <a href="nl/Kleur.pdf">Kleur</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td rowspan="1" id="zon" data-next='#klr,#znw'>
+        <a href="nl/De_Zon.pdf">De Zon</a>
+      </td>
+      <td colspan="1" id="znw" data-next='#kms'>
+        <a href="nl/Zonnewind.pdf">Zonnewind</a>
+      </td>
+      <td colspan="2" rowspan="2" id="kms" data-next='#tsj,#cmp,#PKS'>
+        <a href="nl/Kosmische_Straling.pdf">Kosmische straling</a>
+      </td>
+      <td rowspan='4' id='PKS' data-next=''>
+        <a href="nl/Kosmische_Straling_PWS.pdf">Kosmische straling<br>profielwerkstuk</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2" id="vdw" data-next='#kms'>
+        <a href="nl/Van_der_Waals.pdf">van der Waals en Wilson</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td id="SE" data-next='#ON'>
+        <a href="http://www.fisme.science.uu.nl/hisparc/downloads/hisparc_1-1.pdf">
+          Sterevolutie
+        </a>
+      </td>
+      <td id="ON" data-next='#BR'>
+        <a href="http://www.fisme.science.uu.nl/hisparc/downloads/hisparc_1-2.pdf">
+          Onderzoek
+        </a>
+      </td>
+      <td id="BR" data-next='#ED'>
+        <a href="http://www.fisme.science.uu.nl/hisparc/downloads/hisparc_1-3.pdf">
+          Bronnen
+        </a>
+      </td>
+      <td rowspan="5" id="tsj" data-next='#PKS,#PDe'>
+        <a href="nl/Tsjerenkov.pdf">Tsjerenkov</a>
+      </td>
+    </tr>
+    
+    <tr>
+      <td colspan="1" id="bts" data-next='#rti'>
+        <a href="nl/Botsen.pdf">Botsingen</a>
+      </td>
+      <td rowspan= "2" id="rti" data-next='#cmp,#dar'>
+        <a href="nl/Relativistische_Interacties.pdf">Relativistische<br>interacties</a>
+      </td>
+      <td rowspan="4" id="cmp" data-next='#flr,#PKS'>
+        <a href="nl/Compton.pdf">Compton</a>
+      </td>
+    </tr>
+    <tr>
+      <td rowspan="2" id="pmi" data-next='#brg'>
+        <a href="nl/PMT-stromen.pdf">PMT-stromen</a>
+      </td>
+      <td rowspan="4" id='PDe' data-next='#din'>
+        <a href="nl/Detector_PWS.pdf">Detector<br> profielwerkstuk</a>
+      </td>
+    </tr>
+    <tr>
+      <td rowspan="5" id="kl5" data-next='#kl6,#mam,#ED,#dct,#std'>
+        Vijfde klas
+      </td>
+      <td rowspan="2" id="rlt" data-next='#cmp,#dar'>
+        <a href="nl/Relativiteit.pdf">Relativiteit</a>
+      </td>
+    </tr>
+    <tr>
+      <td rowspan="2" id="mam" data-next='#rlt,#rti'>
+        <a href="nl/Michelson_Morley.pdf">Michelson en Morley</a>
+      </td>
+    </tr>
+    
+    <tr>
+      <td id="brg" data-next='#flr'>
+        <a href="nl/De_Broglie.pdf">de Broglie</a>
+      </td>
+      <td colspan="2" id="flr" data-next='#PDe'>
+        <a href="nl/Fluorescentie.pdf">Fluorescentie</a>
+      </td>
+    </tr>
+    
+    <tr>
+      <td id="ED" data-next='#MV'>
+        <a href="http://www.fisme.science.uu.nl/hisparc/downloads/hisparc_2-1.pdf">
+          Elementaire deeltjes
+        </a>
+      </td>
+      <td id="MV" data-next='#AS'><a
+        href="http://www.fisme.science.uu.nl/hisparc/downloads/hisparc_2-2.pdf">
+          Muon-verval
+        </a>
+        <!--<br>
+        <a href="MuonVervalCoach.pdf">[Simulatie]</a>--></td>
+      <td id="AS" data-next='#DE'>
+        <a href="http://www.fisme.science.uu.nl/hisparc/downloads/hisparc_2-3.pdf">
+          Airshowers
+        </a>
+      </td>
+      <td rowspan="2" class="empty"></td>
+      <td rowspan="2" id='PED' data-next=''>
+        <a href="nl/Deeltjes_PWS.pdf">
+          Elementaire deeltjes<br>profielwerkstuk
+        </a>
+      </td>
+    </tr>
+
+    <tr>
+      <td id="std" data-next='#stk'>
+        <a href="nl/Standaard_Deeltjes.pdf">
+          Deeltjes in het<br>standaardmodel
+        </a>
+      </td>
+      <td id="stk" data-next='#dar'>
+        <a href="nl/Standaard_Krachten.pdf">
+          Krachten in het<br>standaardmodel
+        </a>
+      </td>
+      <td id="dar" data-next='#PED,#PKS,#flr'>
+        <a href="nl/Deeltjes_Shower.pdf">
+          Deeltjes in een<br>airshower
+        </a>
+      </td>
+    </tr>
+
+    <tr>
+      <td rowspan="3" id="kl6" data-next='#din,#DE'>
+        Zesde klas
+      </td>
+      <td id="din" data-next='#dvw'>
+        <a href="nl/Data_Invoer.pdf">Periodieke data<br/>verwerken</a>
+      </td>
+      <td id="dvw" data-next='#PCo'>
+        <a href="nl/Data_Verwerken_Zonder.pdf">Niet-periodieke data<br/>verwerken</a>
+      </td>
+      <td class="empty"></td>
+      <td class="empty"></td>
+      <td rowspan="3" id='PCo' data-next=''>
+        <a href="nl/Correlatie_PWS.pdf">Correlatie<br>profielwerkstuk</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td id="DE" data-next='#DB'>
+        <a href="http://www.fisme.science.uu.nl/hisparc/downloads/hisparc_3-1.pdf">
+          Detector
+        </a>
+      </td>
+      <td id="DB" data-next='#DT'>
+        <a href="http://www.fisme.science.uu.nl/hisparc/downloads/hisparc_3-2.pdf">
+          Detector bouwen
+        </a>
+      </td>
+      <td id="DT" data-next='#DS'>
+        <a href="http://www.fisme.science.uu.nl/hisparc/downloads/hisparc_3-3.pdf">
+          Detector testen
+        </a>
+      </td>
+      <td id="DS" data-next='#DI'>
+        <a href="http://www.fisme.science.uu.nl/hisparc/downloads/hisparc_3-4.pdf">
+          Detectiestation
+        </a>
+      </td>
+     </tr>
+
+     <tr>
+      <td id="DI" data-next='#DN,#PDe'>
+        <a href="http://www.fisme.science.uu.nl/hisparc/downloads/hisparc_3-5.pdf">
+          Detectiestation<br>installeren
+        </a>
+      </td>
+      <td id="DN" data-next='#RD'>
+        <a href="http://www.fisme.science.uu.nl/hisparc/downloads/hisparc_3-6.pdf">
+          Detectienetwerk
+        </a>
+      </td>
+      <td id="RD" data-next='#EP,PKS'>
+        <a href="http://www.fisme.science.uu.nl/hisparc/downloads/hisparc_3-7.pdf">
+          Richting<br>primair deeltje
+        </a>
+      </td>
+      <td id="EP" data-next='#PKS'>
+        <a href="http://www.fisme.science.uu.nl/hisparc/downloads/hisparc_3-8.pdf">
+          Energie<br>primair deeltje
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div id="footer">
+    <p>Change language: <a href="routenet_en.html">English</a></p>
+</div>
+</body>
+</html>
